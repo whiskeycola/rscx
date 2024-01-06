@@ -249,7 +249,7 @@ fn walk_attribute(attribute: &KeyedAttribute) -> (String, Option<proc_macro2::To
         })) => {
             static_format.push_str(&format!(
                 r#"="{}""#,
-                html_escape::encode_unquoted_attribute(&value.value())
+                html_escape::encode_double_quoted_attribute(&value.value())
             ));
         }
         Some(Expr::Lit(ExprLit {

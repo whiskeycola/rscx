@@ -1,6 +1,6 @@
 use std::borrow::Cow;
 
-use html_escape::encode_unquoted_attribute;
+use html_escape::encode_double_quoted_attribute;
 
 pub trait EscapeAttribute {
     fn escape_attribute(&self) -> Cow<str>;
@@ -8,19 +8,19 @@ pub trait EscapeAttribute {
 
 impl EscapeAttribute for &str {
     fn escape_attribute(&self) -> Cow<str> {
-        encode_unquoted_attribute(self)
+        encode_double_quoted_attribute(self)
     }
 }
 
 impl EscapeAttribute for str {
     fn escape_attribute(&self) -> Cow<str> {
-        encode_unquoted_attribute(self)
+        encode_double_quoted_attribute(self)
     }
 }
 
 impl EscapeAttribute for String {
     fn escape_attribute(&self) -> Cow<str> {
-        encode_unquoted_attribute(self)
+        encode_double_quoted_attribute(self)
     }
 }
 
